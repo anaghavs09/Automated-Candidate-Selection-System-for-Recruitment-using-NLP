@@ -1,0 +1,2 @@
+Employed Natural Language Processing(NLP) and Machine Learning methods, utilizing Python to automate recruitment across diverse sectors, extracting vital information from resumes. Applied SQL for data manipulation and querying, ensuring data integrity and facilitating efficient data retrieval from databases.
+Evaluated candidate suitability for various roles, employing company preferences and requirements as criteria demonstrating strong analytical skills and attention to detail and Utilized Linear Support Vector Classification to achieve an 88% accuracy rate.
