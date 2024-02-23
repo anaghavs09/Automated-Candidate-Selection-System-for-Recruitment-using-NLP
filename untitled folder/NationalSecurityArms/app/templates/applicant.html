@@ -1,0 +1,582 @@
+{%include 'admin_header.html'%}
+{% load static %}
+<html>
+<head>
+<style type="text/css">
+	.heading
+	{
+		background: purple;
+		padding: 10px 20px;
+		font-size: 20px;
+		color: #FFF;
+		margin:20px 0;
+		font-style: italic;
+	}
+</style>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<center><h1 style="padding-top: 20px;font-size: 28px;font-family: Algerian;"><i>The National Security Arms Co.</i></h1></center>
+</head>
+<body>
+ <div class="container" style="width:90%; margin:0 auto;">
+ 	{% if messages %}
+                {% for i in messages %}
+                    <div class="alert alert-success">{{i}}</div>
+                {% endfor %}
+            {% endif %}
+	<form method="post" enctype="multipart/form-data">{% csrf_token %}
+		{% for i in detail %}
+	<h1 class="heading"><i>JOB APPLICATION FORM</i></h1>
+	<div class="row">
+		<div class="col-md-6">
+				<div>
+					<label>Position Applied</label>
+				</div>
+				<div>
+					<input type="text" name="position" class="form-control" required="required" value="{{i.position}}" readonly="readonly">
+				</div>
+				<div>
+					<label>Expected Salary</label>
+				</div>
+				<div>
+					<input type="text" name="salary" class="form-control" required="required" value="{{i.salary}}" readonly="readonly">
+
+				</div>
+		</div>
+
+		<div class="col-md-6">
+				<div>
+					<label>Date Applied</label>
+				</div>
+				<div>
+					<input type="text" name="date" class="form-control" required="required" value="{{i.date}}" readonly="readonly">
+
+				</div>
+
+				<div>
+					<label>Availability</label>
+				</div>
+				<div>
+					<input type="text" name="availability" class="form-control" required="required" value="{{i.availability}}" readonly="readonly"> Month(s)
+				</div>
+		</div>
+	</div>
+	<h1 class="heading"><i>Personal Details</i></h1>
+	<div class="row">
+		<div class="col-md-6">
+				<div>
+					<label>Name</label>
+				</div>
+				<div>
+					<input type="text" name="name" class="form-control" required="required" value="{{i.name}}" readonly="readonly">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>NIRC/Passport</label>
+				</div>
+				<div>
+					<input type="text" name="passport" class="form-control" required="required" value="{{i.passport}}" readonly="readonly">
+
+				</div>
+		</div>
+	</div>
+		<div>
+		<label>Address</label>
+		</div>
+		<div>
+			<textarea  name="address" class="form-control" required="required" readonly="readonly">{{i.address}}</textarea>
+		</div>
+		<div>
+			<label>Postcode</label>
+		</div>
+		<div>
+			<input type="text" name="postcode" class="form-control" required="required" value="{{i.postcode}}" readonly="readonly">
+
+		</div>
+		<div>
+			<label>Email</label>
+		</div>
+		<div>
+			<input type="email" name="email" class="form-control" required="required" value="{{i.email}}" readonly="readonly">
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Phone No</label>
+				</div>
+				<div>
+					<input type="text" name="phone" class="form-control" required="required" value="{{i.phone}}" readonly="readonly">
+
+				</div>
+			</div>
+			<div class="col-md-6">
+
+				<div>
+					<label>Mobile No</label>
+				</div>
+				<div>
+					<input type="text" name="mobile" class="form-control" required="required" value="{{i.mobile}}" readonly="readonly"> 
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div>
+					<label>Date of Birth</label>
+				</div>
+				<div>
+					<input type="text" name="dob" class="form-control" required="required" value="{{i.dob}}" readonly="readonly">
+
+				</div>
+			</div>
+			<div class="col-md-6">
+
+				<div>
+					<label>Gender</label>
+				</div>
+				<div style="padding-top:6px;">
+					{% if i.gender == 'Male' %}
+					<input type="checkbox" name="gender" value="Male" checked="checked"> Male
+					<input type="checkbox" name="gender" value="Female"> Female
+					{% elif i.gender == 'Female' %}
+					<input type="checkbox" name="gender" value="Male" > Male
+					<input type="checkbox" name="gender" value="Female" checked="checked"> Female
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	
+	<h1 class="heading"><i>Qualifications</i></h1>
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Qualification</th>
+					<th>Institution/University</th>
+					<th>Major</th>
+					<th>Grade</th>
+					<th>Year Graduated</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" name="q1" required="required" value="{{i.q1}}" readonly="readonly"></td>
+					<td><input type="text" name="i1" required="required" value="{{i.i1}}" readonly="readonly"></td>
+					<td><input type="text" name="m1" required="required" value="{{i.m1}}" readonly="readonly"></td>
+					<td><input type="text" name="g1" required="required" value="{{i.g1}}" readonly="readonly"></td>
+					<td><input type="text" name="y1" required="required" value="{{i.y1}}" readonly="readonly"></td>
+				</tr>
+				<tr>
+					
+					<td><input type="text" name="q2" value="{{i.q2}}" readonly="readonly"></td>
+					<td><input type="text" name="i2" value="{{i.i2}}" readonly="readonly"></td>
+					<td><input type="text" name="m2" value="{{i.m2}}" readonly="readonly" ></td>
+					<td><input type="text" name="g2" value="{{i.g2}}" readonly="readonly"></td>
+					<td><input type="text" name="y2" value="{{i.y2}}" readonly="readonly"></td>
+				</tr>
+				<tr>
+					
+					<td><input type="text" name="q3" value="{{i.q3}}" readonly="readonly"></td>
+					<td><input type="text" name="i3" value="{{i.i2}}" readonly="readonly"></td>
+					<td><input type="text" name="m3" value="{{i.m3}}" readonly="readonly"></td>
+					<td><input type="text" name="g3" value="{{i.g3}}" readonly="readonly"></td>
+					<td><input type="text" name="y3" value="{{i.y3}}" readonly="readonly"></td>				
+				</tr>
+				<tr>
+					
+					<td><input type="text" name="q4" value="{{i.q4}}" readonly="readonly"></td>
+					<td><input type="text" name="i4" value="{{i.i4}}" readonly="readonly"></td>
+					<td><input type="text" name="m4" value="{{i.m4}}" readonly="readonly"></td>
+					<td><input type="text" name="g4" value="{{i.g4}}" readonly="readonly"></td>
+					<td><input type="text" name="y4" value="{{i.y4}}" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="q5" value="{{i.q5}}" readonly="readonly"></td>
+					<td><input type="text" name="i5" value="{{i.i5}}" readonly="readonly"></td>
+					<td><input type="text" name="m5" value="{{i.m5}}" readonly="readonly"></td>
+					<td><input type="text" name="g5" value="{{i.g5}}" readonly="readonly"></td>
+					<td><input type="text" name="y5" value="{{i.y5}}" readonly="readonly"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<h1 class="heading"><i>Working Experience</i></h1>
+	<div class="row">
+		<div class="col-md-6">
+				<div>
+					<label>Company</label>
+				</div>
+				<div>
+					<input type="text" name="company" class="form-control" value="{{i.company}}" readonly="readonly">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>Industry</label>
+				</div>
+				<div>
+					<input type="text" name="industry" class="form-control" value="{{i.industry}}" readonly="readonly">
+
+				</div>
+		</div>
+	</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Position</label>
+				</div>
+				<div>
+					<input type="text" name="position_company" class="form-control" value="{{i.position_company}}" readonly="readonly">
+
+				</div>
+			</div>
+			<div class="col-md-3">
+
+				<div>
+					<label>From</label>
+				</div>
+				<div>
+					<input type="text" name="fromdate" class="form-control" value="{{i.fromdate}}" readonly="readonly"> 
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div>
+					<label>To</label>
+				</div>
+				<div>
+					<input type="text" name="todate" class="form-control" value="{{i.todate}}" readonly="readonly">
+
+				</div>
+			</div>
+		</div>
+			<div>
+					<label>Level</label>
+			</div>
+				<div>
+				{% if i.level == 'Non-Executive' %}
+				<input type="checkbox" name="level" value="Non-Executive" checked="checked"> Non-Executive
+				<input type="checkbox" name="level" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level" value="Manager"> Manager
+				<input type="checkbox" name="level" value="SeniorManager"> Senior Manager
+				{% elif i.level == 'Fresh' %}
+				<input type="checkbox" name="level" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level" value="Fresh" checked="checked"> Fresh/Entry Level
+				<input type="checkbox" name="level" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level" value="Manager"> Manager
+				<input type="checkbox" name="level" value="SeniorManager"> Senior Manager
+				{% elif i.level == 'JuniorExecutive' %}
+				<input type="checkbox" name="level" value="Non-Executive" > Non-Executive
+				<input type="checkbox" name="level" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level" value="JuniorExecutive" checked="checked"> JuniorExecutive
+				<input type="checkbox" name="level" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level" value="Manager"> Manager
+				<input type="checkbox" name="level" value="SeniorManager"> Senior Manager
+				{% elif i.level == 'SeniorExecutive' %}
+				<input type="checkbox" name="level" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level" value="SeniorExecutive" checked="checked"> Senior Executive
+				<input type="checkbox" name="level" value="Manager"> Manager
+				<input type="checkbox" name="level" value="SeniorManager"> Senior Manager
+				{% elif i.level == 'Manager' %}
+				<input type="checkbox" name="level" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level" value="Manager" checked="checked"> Manager
+				<input type="checkbox" name="level" value="SeniorManager"> Senior Manager
+				{% elif i.level == 'SeniorManager' %}
+				<input type="checkbox" name="level" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level" value="Manager"> Manager
+				<input type="checkbox" name="level" value="SeniorManager" checked="checked"> Senior Manager
+				{% endif %}
+				</div>
+
+				<div>
+					<label>Monthy Salary</label>
+				</div>
+				<div>
+					<input type="text" name="monthly_salary" class="form-control"  value="{{i.monthly_salary}}" readonly="readonly">
+
+				</div>
+			
+		
+		<div class="row" style="margin-top: 20px;">
+		<div class="col-md-6">
+				<div>
+					<label>Company</label>
+				</div>
+				<div>
+					<input type="text" name="company1" class="form-control" value="{{i.company1}}" readonly="readonly">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>Industry</label>
+				</div>
+				<div>
+					<input type="text" name="industry1" class="form-control" value="{{i.industry1}}" readonly="readonly">
+
+				</div>
+		</div>
+	</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Position</label>
+				</div>
+				<div>
+					<input type="text" name="position_company1" class="form-control" value="{{i.position_company1}}" readonly="readonly">
+
+				</div>
+			</div>
+			<div class="col-md-3">
+
+				<div>
+					<label>From</label>
+				</div>
+				<div>
+					<input type="text" name="from1" class="form-control" value="{{i.form1}}" readonly="readonly" > 
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div>
+					<label>To</label>
+				</div>
+				<div>
+					<input type="text" name="todate1" class="form-control" value="{{i.todate1}}" readonly="readonly">
+
+				</div>
+			</div>
+		</div>
+			<div>
+					<label>Level</label>
+			</div>
+				<div>
+				{% if i.level1 == 'Non-Executive' %}
+				<input type="checkbox" name="level1" value="Non-Executive" checked="checked"> Non-Executive
+				<input type="checkbox" name="level1" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level1" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level1" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level1" value="Manager"> Manager
+				<input type="checkbox" name="level1" value="SeniorManager"> Senior Manager
+				{% elif i.level1 == 'Fresh' %}
+				<input type="checkbox" name="level1" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level1" value="Fresh" checked="checked"> Fresh/Entry Level
+				<input type="checkbox" name="level1" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level1" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level1" value="Manager"> Manager
+				<input type="checkbox" name="level1" value="SeniorManager"> Senior Manager
+				{% elif i.level1 == 'JuniorExecutive' %}
+				<input type="checkbox" name="level1" value="Non-Executive" > Non-Executive
+				<input type="checkbox" name="level1" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level1" value="JuniorExecutive" checked="checked"> JuniorExecutive
+				<input type="checkbox" name="level1" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level1" value="Manager"> Manager
+				<input type="checkbox" name="level1" value="SeniorManager"> Senior Manager
+				{% elif i.level1 == 'SeniorExecutive' %}
+				<input type="checkbox" name="level1" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level1" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level1" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level1" value="SeniorExecutive" checked="checked"> Senior Executive
+				<input type="checkbox" name="level1" value="Manager"> Manager
+				<input type="checkbox" name="level1" value="SeniorManager"> Senior Manager
+				{% elif i.level1 == 'Manager' %}
+				<input type="checkbox" name="level1" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level1" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level1" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level1" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level1" value="Manager" checked="checked"> Manager
+				<input type="checkbox" name="level1" value="SeniorManager"> Senior Manager
+				{% elif i.level1 == 'SeniorManager' %}
+				<input type="checkbox" name="level1" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level1" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level1" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level1" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level1" value="Manager"> Manager
+				<input type="checkbox" name="level1" value="SeniorManager" checked="checked"> Senior Manager
+				{% endif %}
+				</div>
+
+				<div>
+					<label>Monthy Salary</label>
+				</div>
+				<div>
+					<input type="text" name="monthly_salary1" class="form-control" value="{{i.monthly_salary1}}" readonly="readonly">
+
+				</div>
+		<div class="row" style="margin-top: 20px;">
+		<div class="col-md-6">
+				<div>
+					<label>Company</label>
+				</div>
+				<div>
+					<input type="text" name="company2" class="form-control" value="{{i.company2}}" readonly="readonly">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>Industry</label>
+				</div>
+				<div>
+					<input type="text" name="industry2" class="form-control" value="{{i.industry2}}" readonly="readonly">
+
+				</div>
+		</div>
+	</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Position</label>
+				</div>
+				<div>
+					<input type="text" name="position_company2" class="form-control" value="{{i.position_company2}}" readonly="readonly" >
+
+				</div>
+			</div>
+			<div class="col-md-3">
+
+				<div>
+					<label>From</label>
+				</div>
+				<div>
+					<input type="text" name="from2" class="form-control" value="{{i.from2}}" readonly="readonly"> 
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div>
+					<label>To</label>
+				</div>
+				<div>
+					<input type="text" name="todate2" class="form-control" value="{{i.todate2}}" readonly="readonly">
+
+				</div>
+			</div>
+		</div>
+			<div>
+					<label>Level</label>
+			</div>
+				<div>
+				{% if i.level2 == 'Non-Executive' %}
+				<input type="checkbox" name="level2" value="Non-Executive" checked="checked"> Non-Executive
+				<input type="checkbox" name="level2" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level2" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level2" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level2" value="Manager"> Manager
+				<input type="checkbox" name="level2" value="SeniorManager"> Senior Manager
+				{% elif i.level2 == 'Fresh' %}
+				<input type="checkbox" name="level2" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level2" value="Fresh" checked="checked"> Fresh/Entry Level
+				<input type="checkbox" name="level2" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level2" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level2" value="Manager"> Manager
+				<input type="checkbox" name="level2" value="SeniorManager"> Senior Manager
+				{% elif i.level2 == 'JuniorExecutive' %}
+				<input type="checkbox" name="level2" value="Non-Executive" > Non-Executive
+				<input type="checkbox" name="level2" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level2" value="JuniorExecutive" checked="checked"> JuniorExecutive
+				<input type="checkbox" name="level2" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level2" value="Manager"> Manager
+				<input type="checkbox" name="level2" value="SeniorManager"> Senior Manager
+				{% elif i.level2 == 'SeniorExecutive' %}
+				<input type="checkbox" name="level2" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level2" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level2" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level2" value="SeniorExecutive" checked="checked"> Senior Executive
+				<input type="checkbox" name="level2" value="Manager"> Manager
+				<input type="checkbox" name="level2" value="SeniorManager"> Senior Manager
+				{% elif i.level2 == 'Manager' %}
+				<input type="checkbox" name="level2" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level2" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level2" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level2" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level2" value="Manager" checked="checked"> Manager
+				<input type="checkbox" name="level2" value="SeniorManager"> Senior Manager
+				{% elif i.level2 == 'SeniorManager' %}
+				<input type="checkbox" name="level2" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level2" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level2" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level2" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level2" value="Manager"> Manager
+				<input type="checkbox" name="level2" value="SeniorManager" checked="checked"> Senior Manager
+				{% endif %}
+				</div>
+
+				<div>
+					<label>Monthy Salary</label>
+				</div>
+				<div>
+					<input type="text" name="monthly_salary2" class="form-control" value="{{i.monthly_salary2}}" readonly="readonly">
+
+				</div>	
+			
+	<h1 class="heading"><i>References</i></h1>
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Particulars</th>
+					<th>Reference I</th>
+					<th>Reference II</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name="n1" required="required" value="{{i.n1}}" readonly="readonly"></td>
+					<td><input type="text" name="n2" required="required" value="{{i.n2}}" readonly="readonly"></td>
+
+				</tr>
+				<tr>
+					<td>Occupation</td>
+					<td><input type="text" name="ocu1" required="required" value="{{i.ocu1}}" readonly="readonly"></td>
+					<td><input type="text" name="ocu2" required="required" value="{{i.ocu2}}" readonly="readonly"></td>
+
+				</tr>
+				<tr>
+					<td>Company/Organization</td>
+					<td><input type="text" name="com1" required="required" value="{{i.com1}}" readonly="readonly"></td>
+					<td><input type="text" name="com2" required="required" value="{{i.com2}}" readonly="readonly"></td>
+
+				</tr>
+				<tr>
+					<td>Contact No</td>
+					<td><input type="text" name="contact1" required="required" value="{{i.contact1}}" readonly="readonly"></td>
+					<td><input type="text" name="contact2" required="required" value="{{i.contact2}}" readonly="readonly"></td>
+
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="email" name="mail1" required="required" value="{{i.mail1}}" readonly="readonly"></td>
+					<td><input type="email" name="mail2" required="required" value="{{i.mail2}}" readonly="readonly"></td>
+
+				</tr>
+				<tr>
+					<td>Relationship</td>
+					<td><input type="text" name="ref1" required="required" value="{{i.ref1}}" readonly="readonly"></td>
+					<td><input type="text" name="ref2" required="required" value="{{i.ref2}}" readonly="readonly"></td>
+
+				</tr>			
+				</tbody>
+		</table>
+	</div>
+	<a href="{% url 'shortlist' pk=i.id job_id=i.job_id.id user_id=i.user_id.id %}?email={{i.email}}" class="btn btn-success btn-block"  style="margin-bottom: 50px;">Shorlist Candidate</a>
+	{% endfor %}
+	</form>
+ </div>
+ </body>
+</html>
+{%include 'footer.html'%}

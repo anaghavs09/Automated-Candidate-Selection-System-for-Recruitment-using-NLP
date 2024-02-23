@@ -1,0 +1,58 @@
+{%include 'header.html'%}
+
+<html>
+<head>
+<style>
+table {
+	font-family: times new roman;
+	border-collapse: collapse;
+	width: 100%;
+}
+td, th{
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+	}
+</style>
+</head>
+<body>
+	
+<div class="container">
+    <h1 style="padding-top: 50px;font-size: 28px;font-family: Algerian;padding-bottom:50px;"><center><i>View Applied Jobs</i></center></h1>
+</div>
+<table class="table table-bordered">
+	<tr style="background: green;color: #FFF;">
+		<th>Sno</th>
+		<th>Company Name</th>
+		<th>Job Title</th>
+		<th>Position</th>
+		<th>Experience</th>
+		<th>Salary</th>
+		<th>Qualification</th>
+		<th>Description</th>
+		<th>Applied Date</th>
+		<th>Job Status</th>
+
+	</tr>
+{% for i in detail %}
+	<tr>
+		<td>{{forloop.counter}}</td>
+		<td>{{i.job_id.company_name}}</td>
+		<td>{{i.job_id.job_title}}</td>
+		<td>{{i.job_id.position}}</td>
+		<td>{{i.job_id.experience}}</td>
+		<td>{{i.job_id.salary}}</td>
+		<td>{{i.job_id.qualification}}</td>
+		<td>{{i.job_id.description}}</td>
+		<td>{{i.applied_date}}</td>
+		<td style="color: orange;font-weight: bold;font-size:20px;">{{i.out_come}}</td>
+	</tr>
+{% empty %}
+	<tr>
+		<td>No Jobs</td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
+{%include 'footer.html'%}

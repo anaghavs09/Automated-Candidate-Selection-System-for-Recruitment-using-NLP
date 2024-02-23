@@ -1,0 +1,85 @@
+{%include 'admin_header.html'%}
+
+<html>
+<head>
+<style>
+table {
+	font-family: times new roman;
+	border-collapse: collapse;
+	width: 100%;
+}
+td, th{
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+	}
+</style>
+</head>
+<body>
+<div class="container" style="margin-left: auto;margin-right: auto;">
+    <h1 style="padding-top: 50px;font-size: 28px;font-family: Algerian;padding-bottom:50px;"><center><i>Search Resume</i></center></h1>
+    <form method="post" style="margin-bottom: 30px;">{% csrf_token %}
+    	<div class="row">
+    	<div class="col-md-3">
+            <select name="degree" class="form-control">
+		<option value="">Select Degree</option>
+		{% for i in detail %}
+			<option value="{{i.degree_name}}">{{i.degree_name}}</option>
+		{% endfor %}
+	</select>
+    	</div>
+        <div class="col-md-3">
+            <select name="depart"  class="form-control">
+		<option value="">Select Department</option>
+		{% for i in dept %}
+			<option value="{{i.depart}}">{{i.depart}}</option>
+		{% endfor %}
+	</select>
+        </div>
+		<div class="col-md-3">
+		 <select name="major_skill" class="form-control">
+		<option value="">Select Major Skill</option>
+		{% for i in skill %}
+			<option value="{{i.major_skill}}">{{i.major_skill}}</option>
+		{% endfor %}
+	</select>
+	</div>
+    	<div class="colmd-3">
+    		<input type="submit" class="btn btn-info" value="Search Resume">
+    	</div>
+    </div>
+    </form>
+    <table class="table table-bordered">
+    <tr style="background: green;color: #FFF;">
+        <th>Sno</th>
+        <th>Name</th>
+        <th>Email Id</th>
+        <th>Mobile</th>
+        <th>Degree</th>
+        <th>Department</th>
+        <th>Major Skill</th>
+        <th>Resume</th>
+    </tr>
+{% for i in row %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.0}}</td>
+        <td>{{i.1}}</td>
+        <td>{{i.2}}</td>
+        <td>{{i.3}}</td>
+        <td>{{i.4}}</td>
+        <td>{{i.5}}</td>
+        <td><a href="/media/{{i.6}}" class="btn btn-primary" target="_blank"><i class='fa fa-download'></i> Resume</a></td>
+        </tr>
+{% empty %}
+    <tr>
+        <td>No Resume</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</div>
+</body>
+</html>
+{%include 'footer.html'%}

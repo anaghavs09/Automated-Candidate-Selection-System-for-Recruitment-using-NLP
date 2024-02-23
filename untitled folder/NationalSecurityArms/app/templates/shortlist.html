@@ -1,0 +1,77 @@
+{%include 'admin_header.html'%}
+{% load static %}
+<html>
+<head>
+<style type="text/css">
+	.heading
+	{
+		background: purple;
+		padding: 10px 20px;
+		font-size: 20px;
+		color: #FFF;
+		margin:20px 0;
+		font-style: italic;
+	}
+</style>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<center><h1 style="padding-top: 20px;font-size: 28px;font-family: Algerian;"><i>The National Security Arms Co.</i></h1></center>
+</head>
+<body>
+ <div class="container" style="width:90%; margin:0 auto;">
+ 	{% if messages %}
+                {% for i in messages %}
+                    <div class="alert alert-success">{{i}}</div>
+                {% endfor %}
+            {% endif %}
+	<form method="post" enctype="multipart/form-data">{% csrf_token %}
+	<h1 class="heading"><i>FOR HUMAN RESOURCE USED ONLY</i></h1>
+	<div class="row">
+		<div class="col-md-6">
+				<div>
+					<label>Date Received</label>
+				</div>
+				<div>
+					<input type="date" name="date_recceived" class="form-control" required="required">
+				</div>
+				<div>
+					<label>HR Officer</label>
+				</div>
+				<div>
+					<input type="text" name="hr_officer" class="form-control" required="required">
+
+				</div>
+		</div>
+	</div>
+	<div>
+			<label>Outcome</label>
+			</div>
+				<div>
+				<input type="checkbox" name="out_come" value="Discard"> Discard
+				<input type="checkbox" name="out_come" value="Keep for Future"> Keep for Future
+				<input type="checkbox" name="out_come" value="Insufficient Document"> Insufficient Document
+				<input type="checkbox" name="out_come" value="Call for Interview"> Call for Interview
+				<input type="checkbox" name="out_come" value="Offer  without interview"> Offer Without Interview
+				</div>
+
+
+				<div>
+					<label>Reason</label>
+				</div>
+				<div>
+					<input type="text" name="reason" class="form-control" required="required">
+
+				</div>
+				<div>
+					<label>Date</label>
+				</div>
+				<div>
+					<input type="date" name="date" class="form-control" required="required">
+
+				</div>
+		
+	<input type="submit" class="btn btn-success"  style="margin: 50px 0;" value="Send Applicant Status">
+	</form>
+ </div>
+ </body>
+</html>
+{%include 'footer.html'%}

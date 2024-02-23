@@ -1,0 +1,130 @@
+{% load static %}
+<html style="background: transparent !important;">
+<head>
+<style type="text/css">
+  .para:last-child
+  {
+    border-bottom: none;
+  }
+</style>
+</head>
+<body style="overflow-x: hidden;margin:0;padding: 0;">
+  <div class="bg">
+   <div class="container" >
+    {% include 'menu.html' %}
+    
+    </div>
+  </div>
+<div class="wrapper fadeInDown" style="margin:30px 0;padding: 0;">
+  <div id="formContent" style="max-width:1000px !important;padding-bottom: 30px;padding-left: 20px;">
+    <form method="post" style="margin-bottom: 30px;">{% csrf_token %}
+      <div class="row">
+      <div class="col-md-5">
+            <input type="text" name="search" placeholder="Search Job based on Job Title...." style="border: 1px solid #DDD;" required="required">
+      </div>
+      <div class="col-md-6">
+            <select name="order_job" class="form-control" required="required" style="border: 1px solid #DDD;">
+                <option value="">Select Sorting Order</option>
+                <option value="bubble">Bubble Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                
+            </select>
+        </div>
+      <div class="col-md-3">
+        <input type="submit" class="btn btn-info" value="Search Job">
+      </div>
+    </div>
+    </form>
+  
+    
+    <div class="row">
+        {% for i in detail %}
+        <div class="box">
+          <div class="col-md-4" style="margin-top: 20px;">
+              <img src="/media/{{i.user_id.image}}" class="img-responsive">
+          </div>
+          <div class="col-md-7">
+              <h2>Company Name: {{i.company_name}}</h2>
+              <h4 style="color: purple;">Job Title  : {{i.job_title}} </h4>
+              <p>Posted Date: {{i.date}}</p>
+              <p>Position: {{i.position}}</p>
+                <div class="pull-left">Experience:{{i.experience}}</div>
+              <div class="pull-right"><b>Qualification:{{i.qualification}} </b></div>
+              <div style="clear: both;padding-bottom:15px;"></div>
+              <div class="pull-left">Salary: <span style="color: #213374;font-size:20px;font-weight:bold;"><span style="font-size: 14px;">Rs</span>{{i.salary}}</span></div>
+              <div class="pull-right"><a href="{% url 'apply' pk=i.id %}" class="btn"  >APPLY NOW</a></div>
+              <div style="clear: both;"></div>
+          </div>
+          <div style="clear: both;"></div>
+          <h4 style="text-align: left;">Job Description</h4>
+          <p style="text-align: left;padding-bottom: 20px;border-bottom: 1px dashed #CCC;margin-right: 20px;" class="para">{{i.description}}</p>
+        </div>
+        {% empty %}
+        <h3 style="text-align: center;"> No Jobs </h3>
+        {% endfor %}
+{% if detail %}
+
+{% if b == 'bubble' %}
+<h5 style="text-align: right;font-size:15px;color:green;padding-right: 20px;">Algorithm used Bubble Sort Minimum execution time: {{search_time_bubble}}</h5>
+{% endif %}
+
+{% if b == 'insertion' %}
+<h5 style="text-align: right;font-size:15px;color:green;padding-right: 20px;">Algorithm used Insertion Sort Minimum execution time: {{search_time_ins}}</h5>
+{% endif %}
+{% endif %}
+
+    </div>
+
+
+  </div>
+</div>
+<style type="text/css">
+  .col-md-4
+  {
+    float: left;
+    width: 30% !important;
+  }
+  .img-responsive
+  {
+    width: 100% !important;
+  }
+   .col-md-7
+  {
+    float: right;
+    width: 65% !important;
+    padding-right: 20px;
+  }
+    .col-md-7 h2
+    {
+      text-align: left;
+      color: #000;
+
+    }
+    .pull-left
+  {
+    float: left;
+    font-weight: bold;
+  }
+   .pull-right
+  {
+    float: right;
+  }
+  a.btn
+  {
+    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  a.btn:hover
+  {
+     background-color: #000;
+  }
+</style>
+</body>
+</html>

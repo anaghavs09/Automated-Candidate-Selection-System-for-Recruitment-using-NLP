@@ -1,0 +1,56 @@
+{%include 'admin_header.html'%}
+
+<html>
+<head>
+<style>
+table {
+	font-family: times new roman;
+	border-collapse: collapse;
+	width: 100%;
+}
+td, th{
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 style="padding-top: 50px;font-size: 28px;font-family: Algerian;padding-bottom:50px;"><center><i>View Application Status</i></center></h1>
+</div>
+<table class="table table-bordered">
+	<tr style="background: green;color: #FFF;">
+		<th>Sno</th>
+		<th>Job Title</th>
+		<th>Position</th>
+		<th>Applicant Name</th>
+		<th>Email</th>
+		<th>Date Received</th>
+		<th>HR Officer</th>
+		<th>Outcome</th>
+		<th>Reason</th>
+		<th>Date</th>
+	</tr>
+{% for i in detail %}
+	<tr>
+		<td>{{forloop.counter}}</td>
+		<td>{{i.job_id.job_title}}</td>
+		<td>{{i.job_id.position}}</td>
+		<td>{{i.user_id.name}}</td>
+		<td>{{i.user_id.email}}</td>
+		<td>{{i.date_recceived}}</td>
+		<td>{{i.hr_officer}}</td>
+		<td>{{i.out_come}}</td>
+		<td>{{i.reason}}</td>
+		<td>{{i.date}}</td>
+		</tr>
+{% empty %}
+	<tr>
+		<td>No Applicant</td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
+{%include 'footer.html'%}

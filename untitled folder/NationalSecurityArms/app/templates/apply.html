@@ -1,0 +1,465 @@
+{%include 'header.html'%}
+{% load static %}
+<html>
+<head>
+<style type="text/css">
+	.heading
+	{
+		background: purple;
+		padding: 10px 20px;
+		font-size: 20px;
+		color: #FFF;
+		margin:20px 0;
+		font-style: italic;
+	}
+</style>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<center><h1 style="padding-top: 20px;font-size: 28px;font-family: Algerian;"><i>The National Security Arms Co.</i></h1></center>
+</head>
+<body>
+ <div class="container" style="width:90%; margin:0 auto;">
+ 	{% if messages %}
+                {% for i in messages %}
+                    <div class="alert alert-success">{{i}}</div>
+                {% endfor %}
+            {% endif %}
+	<form method="post" enctype="multipart/form-data">{% csrf_token %}
+	<h1 class="heading"><i>JOB APPLICATION FORM</i></h1>
+	<div class="row">
+		<div class="col-md-6">
+				<div>
+					<label>Position Applied</label>
+				</div>
+				<div>
+					<input type="text" name="position" class="form-control" required="required">
+				</div>
+				<div>
+					<label>Expected Salary</label>
+				</div>
+				<div>
+					<input type="text" name="salary" class="form-control" required="required">
+
+				</div>
+		</div>
+
+		<div class="col-md-6">
+				<div>
+					<label>Date Applied</label>
+				</div>
+				<div>
+					<input type="date" name="date" class="form-control" required="required">
+
+				</div>
+
+				<div>
+					<label>Availability</label>
+				</div>
+				<div>
+					<input type="text" name="availability" class="form-control" required="required"> Month(s)
+				</div>
+		</div>
+	</div>
+	<h1 class="heading"><i>Personal Details</i></h1>
+	<div class="row">
+		<div class="col-md-6">
+				<div>
+					<label>Name</label>
+				</div>
+				<div>
+					<input type="text" name="name" class="form-control" required="required">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>NIRC/Passport</label>
+				</div>
+				<div>
+					<input type="text" name="passport" class="form-control" required="required">
+
+				</div>
+		</div>
+	</div>
+		<div>
+		<label>Address</label>
+		</div>
+		<div>
+			<textarea  name="address" class="form-control" required="required"></textarea>
+		</div>
+		<div>
+			<label>Postcode</label>
+		</div>
+		<div>
+			<input type="text" name="postcode" class="form-control" required="required">
+
+		</div>
+		<div>
+			<label>Email</label>
+		</div>
+		<div>
+			<input type="email" name="email" class="form-control" required="required">
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Phone No</label>
+				</div>
+				<div>
+					<input type="text" name="phone" class="form-control" required="required">
+
+				</div>
+			</div>
+			<div class="col-md-6">
+
+				<div>
+					<label>Mobile No</label>
+				</div>
+				<div>
+					<input type="text" name="mobile" class="form-control" required="required"> 
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div>
+					<label>Date of Birth</label>
+				</div>
+				<div>
+					<input type="date" name="dob" class="form-control" required="required">
+
+				</div>
+			</div>
+			<div class="col-md-6">
+
+				<div>
+					<label>Gender</label>
+				</div>
+				<div style="padding-top:6px;">
+					<input type="checkbox" name="gender" value="Male"> Male
+					<input type="checkbox" name="gender" value="Female"> Female
+
+				</div>
+			</div>
+		</div>
+	
+	<h1 class="heading"><i>Qualifications</i></h1>
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Qualification</th>
+					<th>Institution/University</th>
+					<th>Major</th>
+					<th>Grade</th>
+					<th>Year Graduated</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" name="q1" required="required"></td>
+					<td><input type="text" name="i1" required="required"></td>
+					<td><input type="text" name="m1" required="required"></td>
+					<td><input type="text" name="g1" required="required"></td>
+					<td><input type="text" name="y1" required="required"></td>
+				</tr>
+				<tr>
+					
+					<td><input type="text" name="q2" ></td>
+					<td><input type="text" name="i2" ></td>
+					<td><input type="text" name="m2" ></td>
+					<td><input type="text" name="g2" ></td>
+					<td><input type="text" name="y2" ></td>
+				</tr>
+				<tr>
+					
+					<td><input type="text" name="q3" ></td>
+					<td><input type="text" name="i3" ></td>
+					<td><input type="text" name="m3" ></td>
+					<td><input type="text" name="g3" ></td>
+					<td><input type="text" name="y3" ></td>				
+				</tr>
+				<tr>
+					
+					<td><input type="text" name="q4" ></td>
+					<td><input type="text" name="i4" ></td>
+					<td><input type="text" name="m4" ></td>
+					<td><input type="text" name="g4" ></td>
+					<td><input type="text" name="y4" ></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="q5" ></td>
+					<td><input type="text" name="i5" ></td>
+					<td><input type="text" name="m5" ></td>
+					<td><input type="text" name="g5" ></td>
+					<td><input type="text" name="y5" ></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<h1 class="heading"><i>Working Experience</i></h1>
+	<div class="row">
+		<div class="col-md-6">
+				<div>
+					<label>Company</label>
+				</div>
+				<div>
+					<input type="text" name="company" class="form-control">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>Industry</label>
+				</div>
+				<div>
+					<input type="text" name="industry" class="form-control">
+
+				</div>
+		</div>
+	</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Position</label>
+				</div>
+				<div>
+					<input type="text" name="position_company" class="form-control" >
+
+				</div>
+			</div>
+			<div class="col-md-3">
+
+				<div>
+					<label>From</label>
+				</div>
+				<div>
+					<input type="date" name="fromdate" class="form-control" > 
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div>
+					<label>To</label>
+				</div>
+				<div>
+					<input type="date" name="todate" class="form-control" >
+
+				</div>
+			</div>
+		</div>
+			<div>
+					<label>Level</label>
+			</div>
+				<div>
+				<input type="checkbox" name="level" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level" value="Manager"> Manager
+				<input type="checkbox" name="level" value="SeniorManager"> Senior Manager
+				</div>
+
+				<div>
+					<label>Monthy Salary</label>
+				</div>
+				<div>
+					<input type="text" name="monthly_salary" class="form-control">
+
+				</div>
+			
+		
+		<div class="row" style="margin-top: 20px;">
+		<div class="col-md-6">
+				<div>
+					<label>Company</label>
+				</div>
+				<div>
+					<input type="text" name="company1" class="form-control">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>Industry</label>
+				</div>
+				<div>
+					<input type="text" name="industry1" class="form-control">
+
+				</div>
+		</div>
+	</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Position</label>
+				</div>
+				<div>
+					<input type="text" name="position_company1" class="form-control" >
+
+				</div>
+			</div>
+			<div class="col-md-3">
+
+				<div>
+					<label>From</label>
+				</div>
+				<div>
+					<input type="date" name="from1" class="form-control" > 
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div>
+					<label>To</label>
+				</div>
+				<div>
+					<input type="date" name="todate1" class="form-control" >
+
+				</div>
+			</div>
+		</div>
+			<div>
+					<label>Level</label>
+			</div>
+				<div>
+				<input type="checkbox" name="level1" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level1" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level1" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level1" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level1" value="Manager"> Manager
+				<input type="checkbox" name="level1" value="SeniorManager"> Senior Manager
+				</div>
+
+				<div>
+					<label>Monthy Salary</label>
+				</div>
+				<div>
+					<input type="text" name="monthly_salary1" class="form-control">
+
+				</div>
+		<div class="row" style="margin-top: 20px;">
+		<div class="col-md-6">
+				<div>
+					<label>Company</label>
+				</div>
+				<div>
+					<input type="text" name="company2" class="form-control">
+				</div>
+		</div>
+		<div class="col-md-6">
+
+				<div>
+					<label>Industry</label>
+				</div>
+				<div>
+					<input type="text" name="industry2" class="form-control">
+
+				</div>
+		</div>
+	</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<label>Position</label>
+				</div>
+				<div>
+					<input type="text" name="position_company2" class="form-control" >
+
+				</div>
+			</div>
+			<div class="col-md-3">
+
+				<div>
+					<label>From</label>
+				</div>
+				<div>
+					<input type="date" name="from2" class="form-control" > 
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div>
+					<label>To</label>
+				</div>
+				<div>
+					<input type="date" name="todate2" class="form-control" >
+
+				</div>
+			</div>
+		</div>
+			<div>
+					<label>Level</label>
+			</div>
+				<div>
+				<input type="checkbox" name="level2" value="Non-Executive"> Non-Executive
+				<input type="checkbox" name="level2" value="Fresh"> Fresh/Entry Level
+				<input type="checkbox" name="level2" value="JuniorExecutive"> JuniorExecutive
+				<input type="checkbox" name="level2" value="SeniorExecutive"> Senior Executive
+				<input type="checkbox" name="level2" value="Manager"> Manager
+				<input type="checkbox" name="level2" value="SeniorManager"> Senior Manager
+				</div>
+
+				<div>
+					<label>Monthy Salary</label>
+				</div>
+				<div>
+					<input type="text" name="monthly_salary2" class="form-control">
+
+				</div>	
+			
+	<h1 class="heading"><i>References</i></h1>
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Particulars</th>
+					<th>Reference I</th>
+					<th>Reference II</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name="n1" required="required"></td>
+					<td><input type="text" name="n2" required="required"></td>
+
+				</tr>
+				<tr>
+					<td>Occupation</td>
+					<td><input type="text" name="ocu1" required="required"></td>
+					<td><input type="text" name="ocu2" required="required"></td>
+
+				</tr>
+				<tr>
+					<td>Company/Organization</td>
+					<td><input type="text" name="com1" required="required"></td>
+					<td><input type="text" name="com2" required="required"></td>
+
+				</tr>
+				<tr>
+					<td>Contact No</td>
+					<td><input type="text" name="contact1" required="required"></td>
+					<td><input type="text" name="contact2" required="required"></td>
+
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="email" name="mail1" required="required"></td>
+					<td><input type="email" name="mail2" required="required"></td>
+
+				</tr>
+				<tr>
+					<td>Relationship</td>
+					<td><input type="text" name="ref1" required="required"></td>
+					<td><input type="text" name="ref2" required="required"></td>
+
+				</tr>			
+				</tbody>
+		</table>
+	</div>
+	<input type="submit" class="btn btn-success btn-block"  style="margin-bottom: 50px;">
+	</form>
+ </div>
+ </body>
+</html>
+{%include 'footer.html'%}
